@@ -1,0 +1,27 @@
+﻿@model DeSjoerd.Competition.ViewModels.ObjectiveResultEditorViewModel
+@{
+    
+}
+
+<fieldset>
+    <ol id="objectiveResult-preset">
+        @foreach (var preset in Model.Presets)
+        {
+            <li class="objectiveResult-choice">
+                Preset: <span>@preset.DisplayName</span> Points: <span>@preset.Points</span> <a href="#objectiveResult-preset">Set Points</a>
+            </li>
+        }
+    </ol>
+
+    @Html.HiddenFor(m => m.ObjectiveId)
+    @Html.HiddenFor(m => m.TeamId)
+    
+    @Html.LabelFor(m => m.DisplayName)
+    @Html.TextBoxFor(m => m.DisplayName, new { id = "objectiveResult-displayName" })
+    @Html.ValidationMessageFor(m => m.DisplayName)
+
+    @Html.LabelFor(m => m.Points)
+    @Html.TextBoxFor(m => m.Points, new { id = "objectiveResult-points" })
+    @Html.ValidationMessageFor(m => m.Points)
+
+</fieldset>

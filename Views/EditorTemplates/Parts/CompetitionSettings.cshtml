@@ -1,0 +1,47 @@
+﻿@model DeSjoerd.Competition.ViewModels.CompetitionSettingsEditorViewModel
+@{
+    Style.Include("datetime.css");
+
+    Script.Require("jQuery").AtFoot();
+    Script.Require("jQueryUI_Core").AtFoot();
+    Script.Require("jQueryUI_Widget").AtFoot();
+    Style.Require("jQueryUI_Orchard").AtFoot();
+        //Script.Include("hint.js").AtFoot();
+}
+<h2>Competition</h2>
+
+<fieldset>
+    <label for="@Html.FieldIdFor(m => Model.Date)">Hide results from:</label>
+
+    <label class="forpicker" for="@Html.FieldIdFor(m => Model.Date)">@T("Date")</label>
+    <span class="date">@Html.EditorFor(m => m.Date)</span>
+
+    <label class="forpicker" for="@Html.FieldIdFor(m => Model.Time)">@T("Time")</label>
+    <span class="time">@Html.EditorFor(m => m.Time)</span>
+
+    @Html.ValidationMessageFor(m => m.Date)
+    @Html.ValidationMessageFor(m => m.Time)
+</fieldset>
+<fieldset>
+    @Html.EditorFor(m => m.HideResults)
+    <label for="@Html.FieldIdFor(m => m.HideResults)" class="forcheckbox">@T("Enable Result hiding")</label>
+    @Html.ValidationMessageFor(m => m.HideResults)
+</fieldset>
+
+@using (Script.Foot())
+{
+
+@* generates the localization script *@
+    @Display.DatePickerLocalization()
+    @Display.TimePickerLocalization()
+     
+    <script type="text/javascript">
+        //<![CDATA[
+        $(function () {
+
+            $("#@Html.FieldIdFor(m => Model.Date)").datepicker({ showAnim: "" });
+        $("#@Html.FieldIdFor(m => Model.Time)").timepicker({ stepMinute: 5 });
+    })
+    //]]>
+    </script>
+}

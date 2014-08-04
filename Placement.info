@@ -1,0 +1,22 @@
+﻿<Placement>
+  <Place Parts_Team_Edit="Content:5" />
+  <Place Parts_Objective_Edit="Content:5" />
+  <Place Parts_ObjectiveResult_Edit="Content:5" />
+  <Place Parts_CompetitionSettings_Edit="Content:5" />
+
+  <Match DisplayType="SummaryAdmin">
+    <Place Parts_Game_Admin_Actions="Actions:5" />
+    <Place Parts_Objective_Admin_Actions="Actions:5" />
+    <Place Parts_ObjectiveResult_SummaryAdmin="Meta:15" />
+  </Match>
+  
+  <Match DisplayType="Detail">
+    <Place Parts_Game_Objectives="Content:10" />
+    <Place Parts_Objective_Results="Content:10" />
+    <Place Parts_Team_Results="Content:10" />
+  </Match>
+
+  <Match DisplayType="Summary">
+    <Place Parts_Objective_Results="Content:10" />
+  </Match>
+</Placement>

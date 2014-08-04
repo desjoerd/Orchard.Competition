@@ -1,0 +1,87 @@
+﻿@model DeSjoerd.Competition.ViewModels.ObjectiveEditorViewModel
+@{
+    Script.Require("jQuery");
+    Script.Require("jQueryUI_Sortable");
+}
+
+@Html.HiddenFor(m => m.GameId)
+
+<h3>@T("Objective Result Preset")</h3>
+<ol id="score-options">
+    @for (int i = 0; i < Model.ObjectiveResultPresets.Count; i++)
+    {
+        var objectiveResultPreset = Model.ObjectiveResultPresets[i];
+        
+        <li class="score-option">
+            <label class="displayName-label" for="Objective.ObjectiveResultPresets[@i].DisplayName">@T("Display Name:")</label>
+            <input class="displayName-input" name="Objective.ObjectiveResultPresets[@i].DisplayName" type="text" value="@objectiveResultPreset.DisplayName" />
+
+            <label class="points-label points" for="Objective.ObjectiveResultPresets[@i].Points">@T("Points:")</label>
+            <input class="points-input points" name="Objective.ObjectiveResultPresets[@i].Points" type="text" value="@objectiveResultPreset.Points" />
+
+            <a href="#score-options" class="remove-option">X</a>
+        </li>
+    }
+</ol>
+<a href="#score-options" id="add-score-option">@T("Add Score Option")</a>
+
+@using (Script.Foot())
+{
+    <script type="text/javascript">
+        $(function () {
+
+            var updateScoreOptionNames = function () {
+                $("#score-options").children().each(function (index) {
+
+                    var nameBase = "Objective.ObjectiveResultPresets[" + index + "].";
+                    var titleName = nameBase + "DisplayName";
+                    var pointsName = nameBase + "Points";
+
+                    $(this).children(".displayName-label").attr("for", titleName);
+                    $(this).children(".displayName-input").attr("name", titleName);
+
+                    $(this).children(".points-label").attr("for", pointsName);
+                    $(this).children(".points-input").attr("name", pointsName);
+                });
+            };
+
+            var buildScoreOption = function () {
+                var scoreOption = $("<li class='score-option' />");
+
+                scoreOption.append("<label class='displayName-label'>@T("Display Name:")</label>")
+                           .append("<input class='displayName-input' type='text' />");
+
+                scoreOption.append("<label class='points-label'>@T("Points:")</label>")
+                           .append("<input class='points-input' type='text' />");
+
+                scoreOption.append("<a href='#score-options' class='remove-option'>X</a>");
+
+                return scoreOption;
+            }
+
+            $("#add-score-option").on("click", function () {
+                $("#score-options").append(buildScoreOption());
+
+                updateScoreOptionNames();
+            });
+
+            $(document).on("click", "#score-options .remove-option", function () {
+                $(this).parent("li").remove();
+
+                updateScoreOptionNames();
+
+                return false;
+            });
+
+            $(document).on("sortupdate", "#score-options", function () {
+                updateScoreOptionNames();
+            });
+
+
+
+            $("#score-options").sortable();
+
+            $("#score-options").disableSelection();
+        });
+    </script>
+}

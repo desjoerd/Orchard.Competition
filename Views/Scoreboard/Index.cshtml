@@ -1,0 +1,54 @@
+﻿@model DeSjoerd.Competition.ViewModels.ScoreboardViewModel
+@{
+    Layout.Title = T("Scoreboard").Text;
+}
+
+<h2>@T("Rankings")</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>@T("Positie:")</th>
+            <th>@T("Team:")</th>
+            <th>@T("Score:")</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{var rank = 0;}
+        @foreach(var score in Model.Rankings) {
+            rank++;
+            
+            <tr>
+                <td>@rank</td>
+                <td>@Html.ItemDisplayLink(score.Item1.Title, score.Item1)</td>
+                <td>@score.Item2</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<ul class="small-block-grid-1 large-block-grid-3">
+@foreach (var gameRanking in Model.GameRankings)
+{
+    <li>
+        <h3>@Html.ItemDisplayLink(gameRanking.Item1.Title, gameRanking.Item1)</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>@T("Team:")</th>
+                    <th>@T("Score:")</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var score in gameRanking.Item2) {
+                    <tr>
+                        <td>@Html.ItemDisplayLink(score.Item1.Title, score.Item1)</td>
+                        <td>@score.Item2</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </li>
+}
+</ul>

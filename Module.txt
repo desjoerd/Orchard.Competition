@@ -1,0 +1,9 @@
+﻿Name: Competition
+AntiForgery: enabled
+Author: Sjoerd van der Meer
+Website: http://met.desjoerd.com
+Version: 1.0
+OrchardVersion: 1.6
+Description: The Competition Module allows to create a competition on your site.
+FeatureDescription: Competition Core
+Dependencies: Orchard.Users, Orchard.Autoroute, Title, Orchard.Roles

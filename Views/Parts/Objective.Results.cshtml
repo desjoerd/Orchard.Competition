@@ -1,0 +1,50 @@
+﻿@{
+    DeSjoerd.Competition.ViewModels.ObjectiveResultsViewModel viewModel = Model.ObjectiveResults;
+}
+
+<h5>@T("Punten opties:")</h5>
+<table>
+    <thead>
+        <tr>
+            <th>@T("Resultaat").Text</th>
+            <th>@T("Punten").Text</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var preset in viewModel.Presets)
+        {
+            <tr>
+                <td>@preset.DisplayName</td>
+                <td>@preset.Points</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h5>@T("Resultaten:")</h5>
+@if (viewModel.ObjectiveResults.Count() > 0)
+{
+    <table>
+        <thead>
+            <tr>
+                <th>@T("Team").Text</th>
+                <th>@T("Resultaat").Text</th>
+                <th>@T("Punten").Text</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var result in viewModel.ObjectiveResults)
+            {
+                <tr>
+                    <td>@Html.ItemDisplayLink(result.Item1.Title, result.Item1)</td>
+                    <td>@result.Item2.DisplayName</td>
+                    <td>@result.Item2.Points</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>@T("Er zijn nog geen resultaten.")</p>   
+}

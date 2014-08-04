@@ -1,0 +1,27 @@
+﻿@using Orchard.Utility.Extensions;
+@using DeSjoerd.Competition.Models;
+@using DeSjoerd.Competition.Extensions;
+@{
+    Layout.Title = T("Choose A Game").ToString();
+    IEnumerable<GamePart> games = Model.Games;
+
+    Style.Require("CompetitionChoose");
+}
+
+@if (games.Count() > 0)
+{
+<ul class="choose">
+    @foreach (var game in games.OrderBy(game => game.Title))
+    {
+        string name = game.Title;
+    <li>
+        <a href="@Url.GameObjectives(game)">
+            <h2>@name</h2>
+        </a>
+    </li>
+    }
+</ul>
+}
+else {
+<div class="info message">@T("There are no games for you to see. Want to <a href=\"{0}\">add one</a>?", Url.GameCreate())</div>
+}

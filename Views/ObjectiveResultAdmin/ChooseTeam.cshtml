@@ -1,0 +1,25 @@
+﻿@model DeSjoerd.Competition.ViewModels.ChooseTeamViewModel
+
+@using Orchard.Utility.Extensions;
+@using DeSjoerd.Competition.Models;
+@using DeSjoerd.Competition.Extensions;
+@{
+    Layout.Title = T("Choose A Team").ToString();
+}
+
+@if (Model.Teams.Count() > 0)
+{
+<ul id="widgets-available">
+    @foreach (var team in Model.Teams.OrderBy(team => team.Title))
+    {
+    <li>
+        <a href="@Url.ObjectiveResultCreate(team, Model.Objective)">
+            <h2>@team.Title</h2>
+        </a>
+    </li>
+    }
+</ul>
+}
+else {
+<p>@T("There are no teams available. Want to <a href=\"{0}\">add one</a>?", Url.TeamCreate())</p>
+}

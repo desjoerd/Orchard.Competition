@@ -1,0 +1,15 @@
+﻿@model DeSjoerd.Competition.Models.TeamPart
+
+<h3>User</h3>
+<fieldset>
+    @Html.LabelFor(m => m.UserName, T("User Name"))
+    @Html.TextBoxFor(m => m.UserName, new { @class = "textMedium" })
+    @Html.ValidationMessageFor(m => m.UserName, "*")
+    <span class="hint">@T("You must provide a unique user name")</span>
+</fieldset>
+<fieldset>
+    @Html.LabelFor(m => m.Password, T("Password"))
+    @Html.TextBoxFor(m => m.Password, new { @class = "textMedium" })
+    @Html.ValidationMessageFor(m => m.Password, "*")
+    <span class="hint">@T("A Password is required. The password is saved as plain text.")</span>
+</fieldset>

@@ -1,0 +1,24 @@
+﻿.choose {
+    background: #F3F4F5;
+    border: 1px solid #E4E5E6;
+    padding: 5px;
+}
+
+    .choose li {
+        border: 0;
+        padding: 0;
+        margin: 5px 0;
+        background: #FFF;
+        color: #AEC3CE;
+        position: relative;
+    }
+
+        .choose li a {
+            border: 1px solid #EAEAEA;
+            display: block;
+            padding: 5px 10px;
+        }
+
+        .choose li a:hover {
+            border-color: #888;
+        }

@@ -1,0 +1,29 @@
+﻿@model DeSjoerd.Competition.ViewModels.ChooseObjectiveViewModel
+
+@using Orchard.Utility.Extensions;
+@using DeSjoerd.Competition.Models;
+@using DeSjoerd.Competition.Extensions;
+@{
+    Layout.Title = T("Choose An Objective").ToString();
+    IEnumerable<string> objectiveContentTypes = Model.ObjectiveContentTypes;
+
+    Style.Require("CompetitionChoose");
+}
+
+@if (objectiveContentTypes.Count() > 0)
+{
+<ul class="choose">
+    @foreach (var objectiveContentType in objectiveContentTypes.OrderBy(type => type))
+    {
+        string name = objectiveContentType;
+    <li>
+        <a href="@Url.ObjectiveCreate(objectiveContentType, Model.GameId)">
+            <h2>@name.CamelFriendly()</h2>
+        </a>
+    </li>
+    }
+</ul>
+}
+else {
+<p>@T("There are no objective types available to add.")</p>
+}

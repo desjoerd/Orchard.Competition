@@ -1,0 +1,41 @@
+﻿@{
+    DeSjoerd.Competition.ViewModels.TeamResultsViewModel viewModel = Model.ViewModel;
+}
+
+<h2>@T("Resultaten")</h2>
+
+<ul class="small-block-grid-1 large-block-grid-3">
+    @foreach (var gameObjectiveResults in viewModel.Results)
+    {
+        <li>
+            <h3>@Html.ItemDisplayLink(gameObjectiveResults.Item1.Title, gameObjectiveResults.Item1)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>@T("Objective:")</th>
+                        <th>@T("Score:")</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var objectiveResult in gameObjectiveResults.Item2)
+                    {
+                        if (objectiveResult.Item1 != null)
+                        {
+                        <tr>
+                            @if (objectiveResult.Item1.ContentItem.VersionRecord.Published)
+                            {
+                                <td>@Html.ItemDisplayLink(objectiveResult.Item1.Title, objectiveResult.Item1)</td>
+                            }
+                            else
+                            {
+                                <td>@objectiveResult.Item1.Title</td>
+                            }
+                            <td>@objectiveResult.Item2.Points</td>
+                        </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </li>
+    }
+</ul>

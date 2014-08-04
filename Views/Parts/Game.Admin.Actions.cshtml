@@ -1,0 +1,8 @@
+﻿@using DeSjoerd.Competition.Extensions;
+@using DeSjoerd.Competition.Models;
+
+@{
+    GamePart gamePart = Model.GamePart;
+}
+
+<a href="@Url.GameObjectives(gamePart)">@T("Manage Objectives")</a> |

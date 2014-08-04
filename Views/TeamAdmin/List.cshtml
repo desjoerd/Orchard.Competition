@@ -1,0 +1,35 @@
+﻿@using DeSjoerd.Competition.Extensions;
+@using Orchard.Core.Contents.ViewModels;
+@using Orchard.Utility.Extensions;
+@using DeSjoerd.Competition.Models
+
+@{  
+    Layout.Title = T("Manage Competition").ToString();
+}
+
+
+@if (Model.ContentItems.Items.Count > 0)
+{ 
+    <div class="manage"><a class="add button primaryAction" href="@Url.TeamCreate()">@T("New Team")</a></div>
+    using (Html.BeginFormAntiForgeryPost(Url.Action("List", "Admin", new { area = "Contents", id = "" })))
+    {
+    <fieldset class="bulk-actions">
+        <label for="publishActions">@T("Actions:")</label>
+        <select id="publishActions" name="Options.BulkAction">
+            @Html.SelectOption(ContentsBulkAction.None, ContentsBulkAction.None, T("Choose action...").ToString())
+            @Html.SelectOption(ContentsBulkAction.None, ContentsBulkAction.PublishNow, T("Publish Now").ToString())
+            @Html.SelectOption(ContentsBulkAction.None, ContentsBulkAction.Unpublish, T("Unpublish").ToString())
+            @Html.SelectOption(ContentsBulkAction.None, ContentsBulkAction.Remove, T("Delete").ToString())
+        </select>
+        @Html.Hidden("returnUrl", ViewContext.RequestContext.HttpContext.Request.ToUrlString())
+        <button type="submit" name="submit.BulkEdit" value="yes">@T("Apply")</button>
+    </fieldset>
+    <fieldset class="contentItems bulk-items">
+        @Display(Model.ContentItems)
+    </fieldset>
+    }
+}
+else
+{
+    <div class="info message">@T("There are no teams for you to see. Want to <a href=\"{0}\">add one</a>?", Url.TeamCreate())</div>
+}

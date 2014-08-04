@@ -1,0 +1,8 @@
+﻿@using DeSjoerd.Competition.Extensions;
+@using DeSjoerd.Competition.Models;
+
+@{
+    ObjectivePart objectivePart = Model.ObjectivePart;
+}
+
+<a href="@Url.ObjectiveResults(objectivePart)">@T("Manage Results")</a> |
