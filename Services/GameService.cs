@@ -1,4 +1,5 @@
 ﻿using DeSjoerd.Competition.Models;
+using DeSjoerd.Competition.ViewModels;
 using Orchard.ContentManagement;
 using System;
 using System.Collections.Generic;
@@ -35,6 +36,12 @@ namespace DeSjoerd.Competition.Services
         public IEnumerable<GamePart> Get(VersionOptions versionOptions)
         {
             return _contentManager.Query<GamePart>(versionOptions).List();
+        }
+
+        public void UpdateGame(GameEditorViewModel viewModel, GamePart gamePart)
+        {
+            gamePart.SortObjectivesByAlphabet = viewModel.SortObjectivesByAlphabet;
+            gamePart.UseTinyDisplayType = viewModel.UseTinyDisplayType;
         }
     }
 }

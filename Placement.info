@@ -1,5 +1,6 @@
 ﻿<Placement>
   <Place Parts_Team_Edit="Content:5" />
+  <Place Parts_Game_Edit="Content:5" />
   <Place Parts_Objective_Edit="Content:5" />
   <Place Parts_ObjectiveResult_Edit="Content:5" />
   <Place Parts_CompetitionSettings_Edit="Content:5" />
@@ -18,5 +19,9 @@
 
   <Match DisplayType="Summary">
     <Place Parts_Objective_Results="Content:10" />
+  </Match>
+  <Match DisplayType="Tiny">
+    <Place Parts_Title_Summary="Header:5"/>
+    <Place Parts_Objective_TeamResult="Content:10" />
   </Match>
 </Placement>

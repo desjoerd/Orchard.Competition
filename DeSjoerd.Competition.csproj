@@ -149,6 +149,7 @@
     <Compile Include="ViewModels\ChooseTeamViewModel.cs" />
     <Compile Include="ViewModels\CompetitionPermissionsAdminViewModel.cs" />
     <Compile Include="ViewModels\CompetitionSettingsEditorViewModel.cs" />
+    <Compile Include="ViewModels\GameEditorViewModel.cs" />
     <Compile Include="ViewModels\ObjectiveEditorViewModel.cs" />
     <Compile Include="ViewModels\ObjectiveResultEditorViewModel.cs" />
     <Compile Include="ViewModels\ObjectiveResultPresetViewModel.cs" />
@@ -229,6 +230,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Parts\Team.Results.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Content.Tiny.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\EditorTemplates\Parts\Game.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts\Objective.TeamResult.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

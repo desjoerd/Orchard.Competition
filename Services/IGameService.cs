@@ -1,4 +1,5 @@
 ﻿using DeSjoerd.Competition.Models;
+using DeSjoerd.Competition.ViewModels;
 using Orchard;
 using Orchard.ContentManagement;
 using System;
@@ -37,5 +38,12 @@ namespace DeSjoerd.Competition.Services
         /// <param name="versionOptions"></param>
         /// <returns></returns>
         IEnumerable<GamePart> Get(VersionOptions versionOptions);
+
+        /// <summary>
+        /// Updates the Game
+        /// </summary>
+        /// <param name="viewModel"></param>
+        /// <param name="gamePart"></param>
+        void UpdateGame(GameEditorViewModel viewModel, GamePart gamePart);
     }
 }

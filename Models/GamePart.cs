@@ -21,5 +21,17 @@ namespace DeSjoerd.Competition.Models
                 return Record.Objectives;
             }
         }
+
+        public bool SortObjectivesByAlphabet
+        {
+            get { return Record.SortObjectivesByAlphabet; }
+            set { Record.SortObjectivesByAlphabet = value; }
+        }
+
+        public bool UseTinyDisplayType
+        {
+            get { return Record.UseTinyDisplayType; }
+            set { Record.UseTinyDisplayType = value; }
+        }
     }
 }

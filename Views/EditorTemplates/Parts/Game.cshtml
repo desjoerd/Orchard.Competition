@@ -1,0 +1,13 @@
+﻿@model DeSjoerd.Competition.ViewModels.GameEditorViewModel
+<h3>Game view options</h3>
+<fieldset>
+    @Html.EditorFor(m => m.SortObjectivesByAlphabet)
+    <label for="@Html.FieldIdFor(m => m.SortObjectivesByAlphabet)" class="forcheckbox">@T("Sort Objectives By Alphabet")</label>
+    @Html.ValidationMessageFor(m => m.SortObjectivesByAlphabet)
+</fieldset>
+<fieldset>
+    @Html.EditorFor(m => m.UseTinyDisplayType)
+    <label for="@Html.FieldIdFor(m => m.UseTinyDisplayType)" class="forcheckbox">@T("Use Tiny DisplayType")</label>
+    @Html.ValidationMessageFor(m => m.UseTinyDisplayType)
+    <span class="hint">@T("The tiny DisplayType is for games with many objectives. The Tiny DisplayType hides all the points from the game overview.")</span>
+</fieldset>

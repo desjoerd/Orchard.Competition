@@ -10,11 +10,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using DeSjoerd.Competition.Extensions;
+using Orchard;
 
 namespace DeSjoerd.Competition.Drivers
 {
     public class ObjectivePartDriver : ContentPartDriver<ObjectivePart>
     {
+        private readonly WorkContext _workContext;
         private readonly Lazy<IGameService> _gameService;
         private readonly Lazy<IObjectiveService> _objectiveService;
         private readonly Lazy<IObjectiveResultService> _objectiveResultService;
@@ -22,12 +24,14 @@ namespace DeSjoerd.Competition.Drivers
         private readonly Lazy<IAuthorizer> _authorizer;
 
         public ObjectivePartDriver(
+            WorkContext workContext,
             Lazy<IGameService> gameService,
             Lazy<IObjectiveService> objectiveService,
             Lazy<IObjectiveResultService> objectiveResultService,
             Lazy<ITeamService> teamService,
             Lazy<IAuthorizer> authorizer)
         {
+            this._workContext = workContext;
             this._gameService = gameService;
             this._objectiveService = objectiveService;
             this._objectiveResultService = objectiveResultService;
@@ -74,6 +78,20 @@ namespace DeSjoerd.Competition.Drivers
                     };
 
                     return shapeHelper.Parts_Objective_Results(ObjectiveResults: viewModel);
+                }),
+                ContentShape("Parts_Objective_TeamResult", () =>
+                {
+                    var team = _workContext.CurrentUser.As<TeamPart>();
+                    if (team == null)
+                    {
+                        return null;
+                    }
+                    var result = _objectiveResultService.Value.Get(part)
+                        .Where(r => r.Team.ContentItemRecord.Id == team.ContentItem.Id)
+                        .OrderByDescending(r => r.Points)
+                        .FirstOrDefault();
+
+                    return shapeHelper.Parts_Objective_TeamResult(ObjectiveResult: result);
                 })
                 );
         }

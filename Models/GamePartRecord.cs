@@ -14,5 +14,11 @@ namespace DeSjoerd.Competition.Models
         }
 
         public virtual IList<ObjectivePartRecord> Objectives { get; set; }
+
+
+
+        public virtual bool SortObjectivesByAlphabet { get; set; }
+
+        public virtual bool UseTinyDisplayType { get; set; }
     }
 }

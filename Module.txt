@@ -2,7 +2,7 @@
 AntiForgery: enabled
 Author: Sjoerd van der Meer
 Website: http://met.desjoerd.com
-Version: 1.0
+Version: 1.1
 OrchardVersion: 1.6
 Description: The Competition Module allows to create a competition on your site.
 FeatureDescription: Competition Core

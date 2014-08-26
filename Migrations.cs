@@ -129,5 +129,16 @@ namespace DeSjoerd.Competition
 
             return 4;
         }
+
+        public int UpdateFrom4()
+        {
+            SchemaBuilder.AlterTable("GamePartRecord", table => table
+                .AddColumn<bool>("SortObjectivesByAlphabet"));
+
+            SchemaBuilder.AlterTable("GamePartRecord", table => table
+                .AddColumn<bool>("UseTinyDisplayType"));
+
+            return 5;
+        }
     }
 }

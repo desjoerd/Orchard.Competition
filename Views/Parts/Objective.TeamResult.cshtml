@@ -1,0 +1,8 @@
+﻿@{
+    DeSjoerd.Competition.Models.ObjectiveResultPart objectiveResult = Model.ObjectiveResult;
+}
+@if(objectiveResult == null) {   
+<h5><small><strong style="color: #c62727">@T("Nog geen resultaat")</strong></small></h5>
+} else {
+ <h5><small><strong style="color: #2cce3d">@objectiveResult.Points @T("Punten")</strong></small></h5>   
+}
