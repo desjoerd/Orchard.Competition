@@ -12,9 +12,10 @@ To install the full competition system you need to download the release of the d
   - [Orchard.Competition.Theme](https://github.com/desjoerd/Orchard.Competition.Theme/releases), This is the Theme build for the compition system and is based on Foundation.
   - [Orchard.Competition.Theme.Widgets](https://github.com/desjoerd/Orchard.Competition.Theme.Widgets/releases), Module which contains the Header for the page, because the Theme removes it.
 4. Install the downloaded modules within the admin interface of Orchard.
-5. Add the HeaderTitle Widget to the Header zone in the Admin interface.
-6. Add a link to `/scoreboard` for the scoreboard.
-7. Ready to go :)
+5. Enable all the modules and set the theme to the foundation theme
+6. Add the HeaderTitle Widget to the Header zone in the Admin interface.
+7. Add a link to `/scoreboard` for the scoreboard.
+8. Ready to go :)
 
 ## Compatibility
 Compatible with [Orchard 1.6.1](https://orchard.codeplex.com/releases/view/90325).
